@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/mssql/server:vNext-CTP2.0-ubuntu
+
+LABEL version="0.1"
+LABEL description="Wide World Importers sample database on the latest SQL Server on Linux (vNext-CTP2.0-ubuntu)"
+LABEL maintainer="michalporeba@gmail.com"
