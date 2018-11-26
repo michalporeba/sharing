@@ -8,7 +8,7 @@ select top (3)
     ,type_desc              as [type]
     ,schema_name(schema_id) as [schema]
     ,[name]                 as [name] 
-from sys.all_objects --as objects
+from sys.all_objects as objects
 for xml auto
 
 /* 2. Path Select 
@@ -23,7 +23,7 @@ select top (3)
     ,schema_name(schema_id) as 'properties/schema'
     ,[name]                 as 'properties/name'
 from sys.all_objects as objects
-for xml path --('object'), --root('objects')
+for xml path('object'), root('objects')
 
 /* 3. XML object per row of data 
  *
@@ -37,7 +37,7 @@ select top (3)
         ,type_desc              as [type]
         ,schema_name(schema_id) as 'properties/schema'
         ,[name]                 as 'properties/name'
-     for xml path('object')/*, type */) as XmlData
+     for xml path('object'), type) as XmlData
 from sys.all_objects as objects
 
 /* 4. Documents can be created without tables */
@@ -46,10 +46,11 @@ declare
      @id    int             = 123 
     ,@name  nvarchar(max)   = 'something'
 
-select @id 'id', @name 'name' for xml auto
+--select @id 'id', @name 'name' for xml auto
 select @id '@id', @name 'name' for xml path('object')
 select @id '@id', @name 'text()' for xml path('object')
 
+-------------------------------------------------------------------------------
 /* 5. Create function that returns XML */
 
 go
@@ -86,7 +87,7 @@ declare @xml xml = dbo.GetXml()
 
 select
      --*
-    o.query('.') ObjectNode
+    --o.query('.') ObjectNode
     --,o.query('./properties') Properties
     --,o.value('./@id', 'int') Id
     --,o.value('./properties/name', 'sysname') Name

@@ -23,7 +23,7 @@ select top (3)
     ,schema_name(schema_id) as 'properties.schema'
     ,[name]                 as 'properties.name'
 from sys.all_objects 
-for json path --, root('test') 
+for json path, root('test') 
 
 /* 3. JSON object per row of data 
  * 
@@ -37,7 +37,7 @@ select top (3)
         ,type_desc              as [type] 
         ,schema_name(schema_id) as 'properties.schema'
         ,[name]                 as 'properties.name'
-     for json path /*, without_array_wrapper*/) JsonData
+     for json path, without_array_wrapper) JsonData
 from sys.all_objects 
 
 /* 4. Documents can be created without tables */
@@ -46,11 +46,13 @@ declare
      @id    int             = 123 
     ,@name  nvarchar(max)   = 'something'
 
-select @id 'id', @name 'name' for json auto
+--select @id 'id', @name 'name' for json auto
 select @id 'id', @name 'name' for json path, without_array_wrapper
 select @id 'id', @name 'text()' for json path, without_array_wrapper
 
-/* Create function that returns JSON */
+-------------------------------------------------------------------------------
+
+/* 5. Create function that returns JSON */
 
 go
 create or alter function dbo.GetJson()
@@ -82,8 +84,7 @@ select
 
 /* 7. JSON array to a table */
 
-select *
-from openjson(dbo.GetJson())
+select * from openjson(dbo.GetJson())
 
 select * from openjson(N'
 {  
@@ -95,9 +96,9 @@ select * from openjson(N'
 }
 ')
 
-select *
-    --,Id, [Type], properties Properties
-    --,json_value(properties, '$.schema') Schema2 
+select 
+    Id, [Type], properties Properties
+    ,json_value(properties, '$.schema') Schema2 
     --,convert(sysname, json_value(properties, '$.name')) Name2
 from openjson(dbo.GetJson())
 with (
@@ -107,18 +108,20 @@ with (
      ,[Name]        sysname         '$.properties.name'
      ,properties    nvarchar(max)   as json 
 )
---for xml path('object'), root('objects')
+for xml path('object'), root('objects')
 
 select [value] as [Data] 
 into #JsonData 
 from openjson(dbo.GetJson())
 
+select * from #JsonData
+
 /* 8. Querying JSON in a table */
 
 select [Data] 
     ,json_value([Data], '$.properties') Properties 
-    ,convert(int, json_value([Data], '$.id')) Id 
-    ,convert(int, json_value([Data], '$.abc')) MissingThing
+    ,convert(int, json_value([Data], 'strict $.id')) Id 
+    ,convert(int, json_value([Data], 'lax $.abc')) MissingThing
 from #JsonData
 --add strict or lax to show both modes
 

@@ -1,4 +1,4 @@
-# #v Not so SQL anymore
+# Not so SQL anymore
 
 ## About me and the talk
 
