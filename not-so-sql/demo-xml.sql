@@ -8,7 +8,7 @@ select top (3)
     ,type_desc              as [type]
     ,schema_name(schema_id) as [schema]
     ,[name]                 as [name] 
-from sys.all_objects as objects
+from sys.all_objects as hello
 for xml auto
 
 /* 2. Path Select 
@@ -86,13 +86,13 @@ go
 declare @xml xml = dbo.GetXml()
 
 select
-     --*
-    --o.query('.') ObjectNode
-    --,o.query('./properties') Properties
-    --,o.value('./@id', 'int') Id
+    -- *
+    o.query('.') ObjectNode
+    ,o.query('./properties') Properties
+    ,o.value('./@id', 'int') Id
     --,o.value('./properties/name', 'sysname') Name
-    --,o.value('./properties[1]/name[1]', 'sysname') Name
-    --,o.value('(./properties/name)[1]', 'sysname') Name
+    ,o.value('./properties[1]/name[1]', 'sysname') Name
+    ,o.value('(./properties/name)[1]', 'sysname') Name
 from @xml.nodes('//object') t(o)
 
 go
@@ -112,6 +112,7 @@ select [Data]
     ,[Data].value('(/object/abc)[1]', 'int') MissingThing
 from #XmlData 
 
+
 /* 9. Modifying the data */
 
 select * from #XmlData 
@@ -120,7 +121,7 @@ update #XmlData set [Data].modify('
         with "0"
     ')
 update #XmlData set [Data].modify('
-        delete (/object/@type)[1]
+        delete (/object/type)[1]
     ')
 update #XmlData set [Data].modify('
         insert <new>1</new>
@@ -134,3 +135,16 @@ update #XmlData set [Data].modify('
     ')
 select * from #XmlData 
 
+
+/* 10. Using XQuery as a functional language */
+
+declare @password nvarchar(32) = 'Secret1234'
+declare @hash varbinary(max) = hashbytes('md5', @password)
+
+select 
+     @password Password 
+    ,@hash Hash 
+
+    ,convert(xml, N'').value('
+        xs:base64Binary(xs:hexBinary(sql:variable("@hash")))', 'varchar(max)'
+    ) Base64Hash

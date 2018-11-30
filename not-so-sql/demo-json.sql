@@ -133,3 +133,7 @@ update #JsonData set [Data] = json_modify([Data], '$.type', null)
 update #JsonData set [Data] = json_modify([Data], '$.new', 1)
 update #JsonData set [Data] = json_modify([Data], '$.properties.new', 2)
 select * from #JsonData 
+
+/* 10. Using JSON for schema configuration */
+
+
