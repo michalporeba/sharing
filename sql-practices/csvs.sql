@@ -1,27 +1,6 @@
 use tempdb
 go
 
-
-/* 1NF it is not, but end users like it
- * https://stackoverflow.com/questions/13639262/optimal-way-to-concatenate-aggregate-strings
- * it cannot be that hard!
- *
- * https://www.red-gate.com/simple-talk/sql/t-sql-programming/concatenating-row-values-in-transact-sql/
- * red-gate, they know what they are doing (check date, 2008, reviewed 2012)
- *   - Recursive CTE (2 methods)
- *   - Blackbox XML 
- *   - Using CLR 
- *   - Scalar UDF with recursion 
- *   - TVF with a loop
- *   - Dynamic SQL 
- *   - The Cursor Approach 
- *   - Scalar UDF with T-SQL update extension 
- *   - Scalar UDF with variable concatenation in SELECT
- *
- */
-
-select name from sys.all_objects
-
 declare @csv nvarchar(max) 
 
 select @csv = isnull(@csv + ', ', '') + name 
