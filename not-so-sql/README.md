@@ -8,16 +8,17 @@ databases offer now features typically associated with relational databases
 and a lot of relational database engines support document types or use techniques 
 pioneered by NoSQL giants. The gap between the data models is getting smaller. 
 
-Let's see what is possible with JSON and XML documents in SQL Server and how well it performs. 
-(expand why and who should be attending and what they will learn ie expand the last sentence)
+Whether you are a developer who just wants to store JSON objects without worrying 
+about schemas and constraints, or perhaps a database administrator frustrated by 
+developers putting big blobs of text ignoring all the relational wisdom, join me 
+and let's explore what is possible with JSON and XML documents in SQL Server.
 
 ## Who is this for
 
-DBAs who want to expand their skillset
-Developers who work with SQL Server 
+DBAs who want to expand their skillset and learn how to work with document types.
+Developers who work with SQL Server but mostly with JSON or XML structures.
 
 ## Why should you attend 
-
 
 ## History
 
