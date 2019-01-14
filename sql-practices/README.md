@@ -14,9 +14,8 @@ good, clean code, that not only looks right but also performs well.
 ## Who is this for
 
 * Developers working with SQL Server and Transact-SQL
-* DBAs who write scripts 
 * Data Professionals who do reports using Transact-SQL
-* Accidental DBAs who doesn't know why the code worked in dev but not in production
+* DBAs (who write scripts)
 
 ## Why should you attend 
 
@@ -25,4 +24,4 @@ good, clean code, that not only looks right but also performs well.
 
 ## History 
 
-2019-01-10 - Presented for Back-end Chapter in Vizolution
+2019-01-10 - Presented for Back-end Chapter at Vizolution
