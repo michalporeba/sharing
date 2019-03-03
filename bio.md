@@ -6,4 +6,4 @@ of developers is simply a much more fun way of spending time in an office than l
 He lives in Wales where he currently works as a Senior SQL Server DBA at Vizolution in Swansea.
 In his free time, he speaks obscure languages, plays music with code or dives in local caves 
 trying to find places no human has ever been to before. An intermittent blogger at https://dbain.wales,
-and a once-in-a-while contributor to a few OSS projects.
+and a once-in-a-while contributor to a few Open Source projects.
