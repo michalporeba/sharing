@@ -1,0 +1,10 @@
+grant connect to public
+
+docker network create -d bridge --subnet 192.168.99.0/24 --gateway 192.168.99.1 dnet
+
+docker run -dit -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=DddSecret123' -p 1433:1433 --network nat --name sql microsoft/mssql-server-windows-developer:latest
+docker run -dit -p 8080:80 --network nat --name TestService michalporeba/sqlgmsatest:1803nano
+
+http://localhost:8080/api/info
+http://localhost:8080/api/query/localhost
+http://localhost:8080/api/query/sql

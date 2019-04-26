@@ -1,0 +1,24 @@
+docker run -dit --name TestService -p 8001:80 michalporeba/sqlgmsatest:1809nano
+
+http://52.142.163.162:8001/api/info
+http://52.142.163.162:8001/api/query/db.demo.local
+
+
+New-AdServiceAccount -Name ServiceA -DNSHostName demo.local -PrincipalsAllowedToRetrieveManagedPassword "Domain Controllers", "Domain Admins", "CN=DockerHosts,CN=Computers,DC=demo,DC=local" -KerberosEncryptionType AES128, AES256
+New-AdServiceAccount -Name ServiceB -DNSHostName demo.local -PrincipalsAllowedToRetrieveManagedPassword "Domain Controllers", "Domain Admins", "CN=DockerHosts,CN=Computers,DC=demo,DC=local" -KerberosEncryptionType AES128, AES256
+
+Install-AdServiceAccount -Identity ServiceA
+Install-AdServiceAccount -Identity ServiceB
+
+https://raw.githubusercontent.com/MicrosoftDocs/Virtualization-Documentation/live/windows-server-container-tools/ServiceAccounts/CredentialSpec.psm1
+
+import-module .\CredentialSpec.psm1
+
+ New-CredentialSpec -Name ServiceA -AccountName ServiceA
+ New-CredentialSpec -Name ServiceB -AccountName ServiceB
+
+Get-CredentialSpec
+
+docker run -dit --name TestServiceA -p 8002:80 --security-opt "credentialspec=file://ServiceA.json" michalporeba/sqlgmsatest:1809nano
+docker run -dit --name TestServiceB -p 8003:80 --security-opt "credentialspec=file://ServiceB.json" michalporeba/sqlgmsatest:1809nano
+

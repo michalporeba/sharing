@@ -1,0 +1,11 @@
+https://hub.docker.com/_/microsoft-mssql-server
+
+docker pull mcr.microsoft.com/mssql/server:2017-latest
+
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=dddsecret' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+
+docker logs
+
+
+docker pull mcr.microsoft.com/mssql/server:2019-CTP2.5-ubuntu
+docker run --name dddsql2019 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=DddSecret123' -p 14331:1433 -d mcr.microsoft.com/mssql/server:2019-CTP2.5-ubuntu
