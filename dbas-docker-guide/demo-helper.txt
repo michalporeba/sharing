@@ -1,0 +1,64 @@
+#demo 1 (6 minutes)
+
+in windows mode 
+
+docker ps 
+//there is sql running
+
+docker port sql 
+// there is 1433 mapped 
+
+connect to localhost,1433 with ADS 
+
+docker stop sql 
+
+// let's try 2019
+docker run -d -p 1433:1433 mcr.microsoft.com/mssql/server:2019-CTP2.5-ubuntu
+// problems with matching kernel. There are images for specific operating system and kernels 
+
+docker info 
+// Operating System and OSType
+
+switch to linux 
+
+docker info 
+// Operating System and OSType
+
+docker run -d -p 14331:1433 mcr.microsoft.com/mssql/server:2019-CTP2.5-ubuntu
+
+docker logs
+
+docker run -d -e ACCEPT_EULA=y -e SA_PASSWORD=SqlDaySecret123 -p 1433:1433 mcr.microsoft.com/mssql/server:2019-CTP2.5-ubuntu
+
+docker ps 
+
+connect using ADS, show it is linux and 2019
+
+
+#demo 1.1 (2 minutes?)
+
+connect again using ADS with windows auth 
+connect to windows instance too 
+
+
+
+
+
+#demo 2.0 (1 minute) 
+
+make sure all VMs are up, 
+SSMS on DB is open 
+There is no login for ServiceC 
+TestService is started
+TestServiceC does not exist
+
+#demo 2.1 (2 minutes)
+
+docker run -d -p 8008:80 --name TestServiceC `
+--security-opt "credentialspec=file://ServiceC.json" `
+michalporeba/sqlgmsatest:1809nano
+
+
+#demo 3.0 
+ping -n 1 -l 1024 db.demo.localhost
+netsh int ipv4 show int
