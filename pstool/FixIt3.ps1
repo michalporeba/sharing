@@ -17,18 +17,22 @@ $fix = $false
         Write-Host "  OK. It is not missing."
     }
 
-    if (!(Get-Content -Path $path)) {
-        if ($fix) {
-            Write-Host "  Is empty. Setting the default value."
-            Set-Content -Path $path -Value "OK"
+    if ((Test-Path -Path $path)) {
+        if (!(Get-Content -Path $path)) {
+            if ($fix) {
+                Write-Host "  Is empty. Setting the default value."
+                Set-Content -Path $path -Value "OK"
+            } else {
+                Write-Host "  Is empty!"
+            }
         } else {
-            Write-Host "  Is empty!"
+            Write-Host "  OK. It is not empty."
         }
     } else {
-        Write-Host "  OK. It is not empty."
+        Write-Host "  Inconclusive check."
     }
 
-    if ((Get-Content -Path $path | Measure-Object -Line).Lines -gt 3) {
+    if ((Test-Path -Path $path) -and (Get-Content -Path $path | Measure-Object -Line).Lines -gt 3) {
         if ($fix) {
             Write-Host "  Too long. Making it shorter." 
             $content = Get-Content -Path $path -Tail 3 
