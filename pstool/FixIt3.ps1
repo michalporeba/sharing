@@ -1,14 +1,17 @@
-$location = "./TestLocation"
-$file = "server2","server3"
+$location = "./TestData"
+$environment = "Prod"
+$server = "Server32","server33"
 $fix = $false
 
-@($file) | ForEach-Object {
+@($server) | ForEach-Object {
     Write-Host "Checking $psitem"
-    $path = Join-Path $location "$psitem.txt"
+
+    #convert data to a specific path where the file representing server should be
+    $path = Join-Path $location $environment "$psitem.txt"
 
     if (!(Test-Path -Path $path)) {
         if ($fix) {
-            Write-Host "  Missing. Creating."
+            Write-Host "  Cannot connect"
             New-Item -Path $path -ItemType File | Out-Null
         } else { 
             Write-Host "  Missing!"
@@ -43,8 +46,34 @@ $fix = $false
     } else {
         Write-Host "  OK. It is not too long."
     }
+
+    ###
+    if (!(Test-Path -Path $path)) {
+        Write-Host "Cannot connect to $server"
+        New-Item -Path $path -ItemType File | Out-Null
+    } else {
+        Write-Host "OK. $file is available."
+    }
+
+    if (!(Get-Content -Path $path)) {
+        Write-Host "$server has no data"
+        Set-Content -Path $path -Value "OK"
+    } else {
+        Write-Host "OK. $server has some data."
+    }
+
+    if ((Get-Content -Path $path | Measure-Object -Line).Lines -gt 3) {
+        Write-Host "$server has too much data"
+        $content = Get-Content -Path $path -Tail 3 
+        Set-Content -Path $path -Value $content
+    } else {
+        Write-Host "OK. $server has too much data."
+    }
 }
+
+
 
 # what if we wanted to add exception handling?
 # | Out-ConsoleGridView
 # try OGV (Micrisoft.PowerShell.GraphicalTools)
+# how about a single type of an error? 
