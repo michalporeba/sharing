@@ -22,7 +22,7 @@ To solve this problem we will use local file system to pretend we perform some o
 requirements. A folder within a test directory will represent an environment, a group of servers, and individual files
 will represent the servers. Perhaps a bit made up example, but it will work in any environment so it will be more universal. 
 
-## 1. Create a simple script
+## Create a simple script
 
 First, we need a scenario that simulates creating some form of utility script, perhaps for an administrator of some sort. 
 The challenge is to create a scenario which is not dependant on local resources, so it can be tried out by anybody on any system. 
@@ -32,7 +32,18 @@ To make the usecase a bit more realistick, we will check if the file exists, whe
 If it doesn't exist the fix will be to create it, if it is empty the fix is to put word "OK" into it, and if it is over 3 lines long
 the fix is to remove everything but the last 3 lines from it. 
 
+## Steps
+- how typical solutions evolve 
+- functions are better than scripts and simple dot sourcing can move things along nicely
+- independent functions allow to use piping, filters and ogv
+- help comments help
+- code and data shouldn't mix
+- splitting into multiple files (isn't it getting worse)
+- creating a module
+- publishing a module
 
+- pipelines, tests and automation
+- advanced features
 ...
 
 take it a step further. can we contain blocks with checks for easy retesting after fixing?
