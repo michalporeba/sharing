@@ -47,3 +47,4 @@ the fix is to remove everything but the last 3 lines from it.
 ...
 
 take it a step further. can we contain blocks with checks for easy retesting after fixing?
+variables can be accediently overwriten if they are not properly scoped
