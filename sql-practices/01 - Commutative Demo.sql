@@ -1,3 +1,6 @@
+use tempdb
+go
+
 select * 
 from TableC c 
 inner join TableB b on c.Id = b.Id 

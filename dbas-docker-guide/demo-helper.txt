@@ -62,3 +62,6 @@ michalporeba/sqlgmsatest:1809nano
 #demo 3.0 
 ping -n 1 -l 1024 db.demo.localhost
 netsh int ipv4 show int
+
+
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/
