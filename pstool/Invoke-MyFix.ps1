@@ -2,13 +2,14 @@ function Invoke-MyFix {
     [CmdletBinding()]
     param (
         [Parameter()]
-        [String]$Location, 
+        [String]$Environment, 
         [Parameter()]
         [String[]]$File,
         [Parameter()]
-        [switch]$Fix
+        [switch]$Fix = $false
     )
 
+    $location = "./TestData"
     
     @($file) | ForEach-Object {
         Write-Host "Checking $psitem"
