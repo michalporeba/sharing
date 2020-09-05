@@ -35,6 +35,7 @@ the fix is to remove everything but the last 3 lines from it.
 ## Steps
 - how typical solutions evolve 
 - functions are better than scripts and simple dot sourcing can move things along nicely
+- filtered objects
 - independent functions allow to use piping, filters and ogv
 - help comments help
 - code and data shouldn't mix
