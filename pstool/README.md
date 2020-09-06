@@ -43,8 +43,8 @@ the fix is to remove everything but the last 3 lines from it.
 - [ ] creating a module
 - [ ] publishing a module
 
-- pipelines, tests and automation
-- advanced features
+- [ ] pipelines, tests and automation
+- [ ] advanced features
 ...
 
 take it a step further. can we contain blocks with checks for easy retesting after fixing?
