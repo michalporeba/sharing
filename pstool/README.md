@@ -32,19 +32,19 @@ To make the usecase a bit more realistick, we will check if the file exists, whe
 If it doesn't exist the fix will be to create it, if it is empty the fix is to put word "OK" into it, and if it is over 3 lines long
 the fix is to remove everything but the last 3 lines from it. 
 
-## Steps
-- how typical solutions evolve 
-- functions are better than scripts and simple dot sourcing can move things along nicely
-- filtered objects
-- independent functions allow to use piping, filters and ogv
-- help comments help
-- code and data shouldn't mix
-- splitting into multiple files (isn't it getting worse)
-- creating a module
-- publishing a module
+## Steps (that need to be implemented)
+- [x] how typical solutions evolve 
+- [ ] functions are better than scripts and simple dot sourcing can move things along nicely
+- [ ] filtered objects
+- [ ] independent functions allow to use piping, filters and ogv
+- [ ] help comments help
+- [ ] code and data shouldn't mix
+- [ ] splitting into multiple files (isn't it getting worse)
+- [ ] creating a module
+- [ ] publishing a module
 
-- pipelines, tests and automation
-- advanced features
+- [ ] pipelines, tests and automation
+- [ ] advanced features
 ...
 
 take it a step further. can we contain blocks with checks for easy retesting after fixing?
