@@ -27,7 +27,6 @@ function Invoke-MyFix {
         $psitem.Environment -like $Environment -and `
         $psitem.Name -like $ServerName
     }
-   
     
     @($Servers) | ForEach-Object {
         Write-Host "Checking $($psitem.Name) in $($psitem.Environment)"
@@ -77,11 +76,10 @@ function Invoke-MyFix {
 
 }
 
-
 Invoke-MyFix -Environment Prod -Server Server32
 Invoke-MyFix -Environment Test -Server Server22
 Invoke-MyFix -Environment Dev
     
-    # what if we wanted to add exception handling?
-    # | Out-ConsoleGridView
-    # try OGV (Micrisoft.PowerShell.GraphicalTools)
+# what if we wanted to add exception handling?
+# | Out-ConsoleGridView
+# try OGV (Micrisoft.PowerShell.GraphicalTools)
