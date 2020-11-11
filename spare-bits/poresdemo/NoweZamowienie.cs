@@ -14,7 +14,7 @@ namespace PoresDemo.Function
 {
     public static class NoweZamowienie
     {
-        private static string CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=poresdemotymczasowe;AccountKey=kmvAxNUEMt9SmH7DLtyBk9Mj4oqG6/+9l2Z6fX27NiS5mnfll36mdZqM9LTqGiIbuzRUE+qOTmaXADXesL/qtQ==;EndpointSuffix=core.windows.net";
+        private static string CONNECTION_STRING = "";
 
         [FunctionName("NoweZamowienie")]
         public static async Task<IActionResult> Run(
