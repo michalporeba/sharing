@@ -1,0 +1,13 @@
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.csprojAssemblyReference.cache
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.AssemblyInfoInputs.cache
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.AssemblyInfo.cs
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.csproj.CoreCompileInputs.cache
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs.deps.json
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs.runtimeconfig.json
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs.runtimeconfig.dev.json
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs.dll
+/home/michal/Dev/sharing/spare-bits/structs/bin/Debug/netcoreapp3.1/structs.pdb
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.dll
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.pdb
+/home/michal/Dev/sharing/spare-bits/structs/obj/Debug/netcoreapp3.1/structs.genruntimeconfig.cache
